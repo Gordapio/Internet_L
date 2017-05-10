@@ -8,39 +8,58 @@
 <ui:define name="title"></ui:define>
     <ui:define name="content">
   
-
+        
   <body class="body page-evento clearfix">
     <div class="element element-1"><h:outputText id="nombrevento"  value="#{ec.eselected.nombre}"/></div>
     <div class="element element-2"><h:outputText id="descripcion"  value="#{ec.eselected.descripcion}"/></div>
+   
+    <c:choose>
+        
+        <c:when test="#{not empty usuarioControlador.user}">
+        
+    <h:form> 
+    
     <div id="enviarvaloracion" class="container clearfix">
       <p class="text text-1">
         Valoración:
       </p>
-      <select id="valoracion" class="_select" name="Puntuacion">
-      <option value="0">
-        0
-      </option>
-      <option value="1">
-        1
-      </option>
-      <option value="2">
-        2
-      </option>
-      <option value="3">
-        3
-      </option>
-      <option value="4">
-        4
-      </option>
-      <option value="5">
-        5
-      </option></select>
+      <div id="tipo" class="wrapper wrapper-2 js-tipo">
+      	<h:selectOneMenu value="#{vc.puntuacion}">
+                        <f:selectItem itemValue="0" itemLabel="0" />
+   			<f:selectItem itemValue="1" itemLabel="1" />
+   			<f:selectItem itemValue="2" itemLabel="2" />
+   			<f:selectItem itemValue="3" itemLabel="3" />
+                        <f:selectItem itemValue="4" itemLabel="4" />
+                        <f:selectItem itemValue="5" itemLabel="5" />
+                       
+                       
+   		</h:selectOneMenu>
+      </div>
       <p class="text text-2">
         Comentarios:
       </p>
-      <input id="comentario" class="_input js-comentario" name="valoracion"
-      type="text" /> <button class="_button">Enviar</button>
+        <h:inputText id="buscar" class="_input _input-1 js-busqueda" value="#{vc.comentario}"/>
+        <h:commandButton class="_button" label="Valorar" value="Valorar" action="#{vc.creaValoracion()}"/>
     </div>
+        </h:form>
+        </c:when>
+        </c:choose>
+    
+    <ui:repeat var="valoraciones" value="#{vc.verValoraciones()}">
+        <h:form>
+           
+            <div class="container _element">
+                
+                <p class="text text-1">Nickname: <h:outputText id="nickvaloracion"  value="#{valoraciones.autor.nickname}"/></p>
+                <p class="text text-1">Comentario: <h:outputText id="comentario"  value="#{valoraciones.comentario}"/></p>
+                <p class="text text-1">Puntuación:: <h:outputText id="puntuacion"  value="#{valoraciones.puntuacion}"/></p>
+         
+            </div>
+                
+        </h:form>
+            
+    </ui:repeat>
+    
   </body>
 </ui:define>
 

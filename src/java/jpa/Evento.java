@@ -8,7 +8,7 @@ package jpa;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,9 +53,9 @@ public class Evento implements Serializable {
     private Boolean propuesto;
     private tipoEvento tevento;
     @OneToMany
-    private List<Valoracion> valoraciones;
+    private ArrayList<Valoracion> valoraciones;
     @ManyToMany
-    private List<Usuarioreg> likes;
+    private ArrayList<Usuarioreg> likes;
     
     public Evento(){
         
@@ -125,11 +125,11 @@ public class Evento implements Serializable {
         this.tevento = te;
     }
 
-    public void setValoraciones(List<Valoracion> valoraciones) {
+    public void setValoraciones(ArrayList<Valoracion> valoraciones) {
         this.valoraciones = valoraciones;
     }
 
-    public void setLikes(List<Usuarioreg> likes) {
+    public void setLikes(ArrayList<Usuarioreg> likes) {
         this.likes = likes;
     }    
     
@@ -201,11 +201,11 @@ public class Evento implements Serializable {
         return tevento;
     }
 
-    public List<Valoracion> getValoraciones() {
+    public ArrayList<Valoracion> getValoraciones() {
         return valoraciones;
     }
 
-    public List<Usuarioreg> getLikes() {
+    public ArrayList<Usuarioreg> getLikes() {
         return likes;
     }
     

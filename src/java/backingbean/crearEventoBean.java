@@ -5,12 +5,14 @@
  */
 package backingbean;
 
+import java.util.ArrayList;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import jpa.Evento;
 import jpa.Evento.tipoEvento;
 import jpa.Usuarioreg.*;
+import jpa.Valoracion;
 
 /**
  *
@@ -43,7 +45,9 @@ public class crearEventoBean {
     //private Boolean visible;
     //private Boolean propuesto;
     private tipoEvento tevento;
-    //private List<Valoracion> valoraciones;
+
+    
+    private ArrayList<Valoracion> valoraciones;
     //private List<Usuarioreg> likes;
     
     public crearEventoBean() {
@@ -121,6 +125,14 @@ public class crearEventoBean {
         this.descripcion = descripcion;
     }
     
+    public ArrayList<Valoracion> getValoraciones() {
+        return valoraciones;
+    }
+
+    public void setValoraciones(ArrayList<Valoracion> valoraciones) {
+        this.valoraciones = valoraciones;
+    }
+    
     public String creaEvento(){
         //try{
             Evento e = new Evento();
@@ -136,7 +148,7 @@ public class crearEventoBean {
             e.setTe(tevento);
             e.setTlf_contacto(tlf_contacto);
             e.setVisible(Boolean.FALSE);
-            
+            e.setValoraciones(new ArrayList<>());
             if(us.getUser().getRol().equals(tipoRol.periodista)){
               e.setVisible(Boolean.TRUE); 
               e.setPropuesto(Boolean.FALSE);

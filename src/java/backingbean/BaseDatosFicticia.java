@@ -30,7 +30,15 @@ public class BaseDatosFicticia {
     public BaseDatosFicticia() {
         listaEventos=new ArrayList<>();
         listaUsuarios=new ArrayList<>();
-        listaValoraciones=new ArrayList<>();
+        ArrayList<Valoracion> valoraciones=new ArrayList<>();
+         ArrayList<Valoracion> valoracione=new ArrayList<>();
+         ArrayList<Valoracion> valoracioness=new ArrayList<>();
+        
+        Valoracion val = new Valoracion();
+        val.setAutor(null);
+        val.setComentario("");
+        val.setPuntuacion(0);
+        valoraciones.add(val);
         
         Evento e= new Evento();
         e.setNombre("Fiesta1");
@@ -40,7 +48,14 @@ public class BaseDatosFicticia {
         e.setPropuesto(Boolean.FALSE);
         //e.setFecha_inicio((Date) Calendar.getInstance().getTime());
         e.setFecha_inicio(Date.valueOf("2015-03-31"));
+        e.setValoraciones(valoraciones);
         listaEventos.add(e);
+        
+        Valoracion va = new Valoracion();
+        va.setAutor(null);
+        va.setComentario("");
+        va.setPuntuacion(0);
+        valoracione.add(va);
         
         Evento ev= new Evento();
         ev.setNombre("Feria");
@@ -48,6 +63,7 @@ public class BaseDatosFicticia {
         ev.setVisible(Boolean.TRUE);
         ev.setPropuesto(Boolean.FALSE);
         ev.setFecha_inicio(Date.valueOf("2017-08-20"));
+        e.setValoraciones(valoracione);
         listaEventos.add(ev);
         
         //eventos propuestos
@@ -58,6 +74,7 @@ public class BaseDatosFicticia {
         eve.setVisible(Boolean.FALSE);
         eve.setPropuesto(Boolean.TRUE);
         eve.setFecha_inicio(Date.valueOf("2017-05-05"));
+        e.setValoraciones(valoracioness);
         listaEventos.add(eve);
         
         
@@ -65,14 +82,23 @@ public class BaseDatosFicticia {
         Usuarioreg u=new Usuarioreg();
         u.setNickname("Paco");
         u.setContraseña("123");
+        u.setId_usuario(2L);
         u.setRol(Usuarioreg.tipoRol.normal);
         listaUsuarios.add(u);
+        
+        Usuarioreg uz=new Usuarioreg();
+        uz.setNickname("Paca");
+        uz.setContraseña("123");
+        uz.setId_usuario(6L);
+        uz.setRol(Usuarioreg.tipoRol.normal);
+        listaUsuarios.add(uz);
         
         Usuarioreg us=new Usuarioreg();
         us.setNickname("Periodista1");
         us.setNombre("Isidro");
         us.setApellidos("González Almodovar");
         us.setContraseña("123");
+        us.setId_usuario(3L);
         us.setRol(Usuarioreg.tipoRol.periodista);
         listaUsuarios.add(us);
         
@@ -81,18 +107,21 @@ public class BaseDatosFicticia {
         uss.setNombre("Rodrigo");
         uss.setApellidos("Sereno Pérez");
         uss.setContraseña("123");
+        uss.setId_usuario(4L);
         uss.setRol(Usuarioreg.tipoRol.periodista);
         listaUsuarios.add(uss);
         
         Usuarioreg use=new Usuarioreg();
         use.setNickname("Normal");
         use.setContraseña("123");
+        use.setId_usuario(5L);
         use.setRol(Usuarioreg.tipoRol.normal);
         listaUsuarios.add(use);
         
         Usuarioreg admin=new Usuarioreg();
         admin.setNickname("admin");
         admin.setContraseña("admin");
+        admin.setId_usuario(1L);
         admin.setRol(Usuarioreg.tipoRol.administrador);
         listaUsuarios.add(admin);
     }

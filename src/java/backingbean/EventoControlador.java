@@ -14,6 +14,7 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import jpa.Evento;
 import jpa.Evento.tipoEvento;
+import jpa.Valoracion;
 
 /**
  *
@@ -26,6 +27,19 @@ public class EventoControlador{
     @Inject
     BaseDatosFicticia bd;    
 
+    
+    //Valoraciones
+    
+    private ArrayList<Valoracion> listaValoracion;
+
+    public ArrayList<Valoracion> getListaValoracion() {
+        return listaValoracion;
+    }
+
+    public void setListaValoracion(ArrayList<Valoracion> listaValoracion) {
+        this.listaValoracion = listaValoracion;
+    }
+    
     //evento seleccionado para mostrar
     private Evento eselected;
 
@@ -260,4 +274,7 @@ public class EventoControlador{
             }
         return propuestos;
     }
+    
+    
+    
 }

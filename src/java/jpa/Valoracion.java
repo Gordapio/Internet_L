@@ -64,9 +64,6 @@ public class Valoracion implements Serializable {
     
     public Valoracion(){}
     
-    public  void setUsuarioreg(Usuarioreg autor){
-        this.autor = autor;
-    }
 
     @Override
     public int hashCode() {
