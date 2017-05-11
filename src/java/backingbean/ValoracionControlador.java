@@ -7,6 +7,7 @@ package backingbean;
 
 import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -20,7 +21,7 @@ import jpa.Valoracion;
  * @author gordo
  */
 @Named(value = "vc")
-@ApplicationScoped
+@RequestScoped
 
 public class ValoracionControlador {
 
@@ -72,7 +73,7 @@ public class ValoracionControlador {
         
         ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ya ha valorado", "Ya ha valorado"));
         
-            
+           
         } else{
             
          
@@ -83,7 +84,7 @@ public class ValoracionControlador {
         val.setPuntuacion(puntuacion);
          
         addValoracion(val);
-                }
+               }
         
         return "evento.xhtml";
         }
@@ -94,7 +95,7 @@ public class ValoracionControlador {
          boolean encontrado = false;
          int i = 0;
          
-         if(ev.getEselected().getValoraciones() == null){
+         if(ev.getEselected().getValoraciones().isEmpty() || ev.getEselected().getValoraciones() == null){
              return encontrado;
          } else {
              

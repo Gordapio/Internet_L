@@ -51,6 +51,9 @@
                     <h:inputText id="tout" value="#{usuarioControlador.user.telefono}"/>
                     
                     <h:commandButton id="modificardatos" value="Modif" action="#{usuarioControlador.modificarUsuario()}" />
+                                       
+                    <h:commandButton id="borrarusuario" value="Borrar" action="#{usuarioControlador.borrarUsuario(usuarioControlador.user)}" />
+
                 </h:form>
     </c:when> 
           
@@ -87,6 +90,9 @@
                     <h:inputText id="toutp" value="#{usuarioControlador.periodistaSelected.telefono}"/>
                     
                     <h:commandButton id="modificardatosperiodista" value="Modifi" action="#{usuarioControlador.modificarUsuario()}" />
+                            
+                    <h:commandButton id="borrarperiodista" value="Borrar" action="#{usuarioControlador.borrarPeriodista(usuarioControlador.periodistaSelected)}" />
+
                 </h:form>
           
           </c:when>     

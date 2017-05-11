@@ -75,19 +75,18 @@ public class UsuarioControlador implements Serializable{
     public String modificarUsuario(){return null;}
     
     /*Da de baja a un usuario*/
-    /*public String darBajaUsuario(long id){
+    public String darBajaUsuario(Usuarioreg id){
         int i=0;
         boolean encontrado=false;
         while (!encontrado){
-            if (Objects.equals(bd.listaUsuarios.get(i).getId_usuario(), id)){
+            if (Objects.equals(bd.getUsuarios().get(i).getId_usuario(), id)){
                 encontrado=true;
-                bd.listaUsuarios.get(i).se
+                bd.getUsuarios().remove(i);
             }
             else i++;
-        
-        return null;
-    }*/
-    
+     }   
+        return "index.xhtml";
+    }
     public String muestraUsuarios(){return null;}
     
     public ArrayList<Usuarioreg> muestraPeriodistas(){
@@ -105,4 +104,24 @@ public class UsuarioControlador implements Serializable{
         periodistaSelected=p;
         return "modificar-datos.xhtml";
     }
+    
+    
+    public String borrarPeriodista(Usuarioreg p){
+        
+        bd.getUsuarios().remove(p);
+        periodistaSelected = null;
+        
+        return "mostrar-periodistas.xhtml";
+        
+    }
+    
+    public String borrarUsuario(Usuarioreg u){
+        
+        bd.getUsuarios().remove(u);
+        user = null;
+        
+        return "index.xhtml";
+        
+    }
+    
 }

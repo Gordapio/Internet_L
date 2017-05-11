@@ -34,11 +34,11 @@ public class BaseDatosFicticia {
          ArrayList<Valoracion> valoracione=new ArrayList<>();
          ArrayList<Valoracion> valoracioness=new ArrayList<>();
         
-        Valoracion val = new Valoracion();
+        /*Valoracion val = new Valoracion();
         val.setAutor(null);
         val.setComentario("");
         val.setPuntuacion(0);
-        valoraciones.add(val);
+        valoraciones.add(val);*/
         
         Evento e= new Evento();
         e.setNombre("Fiesta1");
@@ -51,19 +51,20 @@ public class BaseDatosFicticia {
         e.setValoraciones(valoraciones);
         listaEventos.add(e);
         
-        Valoracion va = new Valoracion();
+        /*Valoracion va = new Valoracion();
         va.setAutor(null);
         va.setComentario("");
         va.setPuntuacion(0);
-        valoracione.add(va);
+        valoracione.add(va);*/
         
         Evento ev= new Evento();
         ev.setNombre("Feria");
+        ev.setDescripcion("YEAH");
         ev.setLocalidad("Bonela");
         ev.setVisible(Boolean.TRUE);
         ev.setPropuesto(Boolean.FALSE);
         ev.setFecha_inicio(Date.valueOf("2017-08-20"));
-        e.setValoraciones(valoracione);
+        ev.setValoraciones(valoracione);
         listaEventos.add(ev);
         
         //eventos propuestos
