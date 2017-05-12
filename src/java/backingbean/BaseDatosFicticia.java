@@ -41,6 +41,7 @@ public class BaseDatosFicticia {
         valoraciones.add(val);*/
         
         Evento e= new Evento();
+        e.setId_evento(1L);
         e.setNombre("Fiesta1");
         e.setDescripcion("Cagontusmuela");
         e.setLocalidad("Alozaina");
@@ -59,6 +60,7 @@ public class BaseDatosFicticia {
         
         Evento ev= new Evento();
         ev.setNombre("Feria");
+        ev.setId_evento(2L);
         ev.setDescripcion("YEAH");
         ev.setLocalidad("Bonela");
         ev.setVisible(Boolean.TRUE);
@@ -70,12 +72,13 @@ public class BaseDatosFicticia {
         //eventos propuestos
         Evento eve= new Evento();
         eve.setNombre("Fiestaasasdasdasdas");
+        eve.setId_evento(3L);
         eve.setDescripcion("enga amo");
         eve.setLocalidad("Churripena");
         eve.setVisible(Boolean.FALSE);
         eve.setPropuesto(Boolean.TRUE);
         eve.setFecha_inicio(Date.valueOf("2017-05-05"));
-        e.setValoraciones(valoracioness);
+        eve.setValoraciones(valoracioness);
         listaEventos.add(eve);
         
         

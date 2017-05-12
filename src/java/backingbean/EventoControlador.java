@@ -200,7 +200,14 @@ public class EventoControlador{
                 updated=true;
             }else i++;
         }
-        return null;
+        return "index.xhtml";
+    }
+    
+    public String eliminarEventoPropuesto(){
+        
+        bd.getEventos().remove(eselected);
+        return "proponer-evento.xhtml";
+        
     }
 
     public String destacarEvento(Long id){

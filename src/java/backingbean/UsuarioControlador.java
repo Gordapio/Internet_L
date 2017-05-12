@@ -74,19 +74,6 @@ public class UsuarioControlador implements Serializable{
     /*Modifica un usuario. Habría que comprobar permisos?*/
     public String modificarUsuario(){return null;}
     
-    /*Da de baja a un usuario*/
-    public String darBajaUsuario(Usuarioreg id){
-        int i=0;
-        boolean encontrado=false;
-        while (!encontrado){
-            if (Objects.equals(bd.getUsuarios().get(i).getId_usuario(), id)){
-                encontrado=true;
-                bd.getUsuarios().remove(i);
-            }
-            else i++;
-     }   
-        return "index.xhtml";
-    }
     public String muestraUsuarios(){return null;}
     
     public ArrayList<Usuarioreg> muestraPeriodistas(){

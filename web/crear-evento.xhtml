@@ -39,6 +39,7 @@
     </p>
     <div id="tipo" class="wrapper wrapper-2 js-tipo">
     <h:selectOneMenu value="#{newEv.tevento}">
+        <f:selectItem itemValue="#{newEv.tevento = Null}" itemLabel="Elige un campo" />
         <f:selectItem itemValue="#{newEv.tevento = EMPRESARIAL}" itemLabel="Empresarial" />
         <f:selectItem itemValue="#{newEv.tevento = SOCIAL}" itemLabel="Social" />
         <f:selectItem itemValue="#{newEv.tevento = CULTURAL}" itemLabel="Cultural" />

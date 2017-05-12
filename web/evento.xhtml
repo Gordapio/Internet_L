@@ -14,6 +14,19 @@
     <div class="element element-2"><h:outputText id="descripcion"  value="#{ec.eselected.descripcion}"/></div>
    
     <c:choose>
+        <c:when test="#{(usuarioControlador.user.rol == 'periodista' || usuarioControlador.user.rol == 'administrador') and !ec.eselected.propuesto}">
+            <h:form>
+                <h:commandButton class="_button" label="Borrar" value="borrarevento" action="#{ec.eliminarEvento(ec.eselected.id_evento)}"/>
+            </h:form>
+        </c:when>
+        <c:otherwise>
+            <h:form>
+                <h:commandButton class="_button" label="Borrar" value="borrarevento" action="#{ec.eliminarEventoPropuesto()}"/>
+            </h:form>
+        </c:otherwise>
+        
+    </c:choose>
+    <c:choose>
         
         <c:when test="#{not empty usuarioControlador.user}">
         
