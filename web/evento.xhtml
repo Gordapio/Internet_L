@@ -1,0 +1,47 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:define name="title"></ui:define>
+    <ui:define name="content">
+  
+
+  <body class="body page-evento clearfix">
+    <div class="element element-1"><h:outputText id="nombrevento"  value="#{ec.eselected.nombre}"/></div>
+    <div class="element element-2"><h:outputText id="descripcion"  value="#{ec.eselected.descripcion}"/></div>
+    <div id="enviarvaloracion" class="container clearfix">
+      <p class="text text-1">
+        Valoración:
+      </p>
+      <select id="valoracion" class="_select" name="Puntuacion">
+      <option value="0">
+        0
+      </option>
+      <option value="1">
+        1
+      </option>
+      <option value="2">
+        2
+      </option>
+      <option value="3">
+        3
+      </option>
+      <option value="4">
+        4
+      </option>
+      <option value="5">
+        5
+      </option></select>
+      <p class="text text-2">
+        Comentarios:
+      </p>
+      <input id="comentario" class="_input js-comentario" name="valoracion"
+      type="text" /> <button class="_button">Enviar</button>
+    </div>
+  </body>
+</ui:define>
+
+</ui:composition>

@@ -1,0 +1,37 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+<ui:define name="title"></ui:define>
+    <ui:define name="content">
+        <c:choose>
+        <c:when test="#{usuarioControlador.user.rol == 'periodista'}">
+  <body class="body page-proponer-evento clearfix">
+    <div class="container container-1 clearfix">
+   <ui:repeat var="evento" value="#{ec.eventosPropuestos()}">
+        <h:form>
+            <h:commandLink action="#{ec.seleccionaEvento(evento)}">
+            <div class="container _element">
+                
+            <p class="text text-1">Nombre evento: <h:outputText id="nombrevento"  value="#{evento.nombre}"/></p>
+            <p class="text text-1">Descripción: <h:outputText id="descripcion"  value="#{evento.descripcion}"/></p>
+            <p class="text text-1">Fecha: <h:outputText id="date"  value="#{evento.fecha_inicio}"/></p>
+            <p class="text text-1">Localidad: <h:outputText id="local"  value="#{evento.localidad}"/></p>
+         
+            </div>
+                </h:commandLink>
+        </h:form>
+            
+    </ui:repeat>
+    </div>
+    </body>
+    </c:when>
+        <c:otherwise>
+                <p>Solo puede ver esta vista un periodista</p>
+            </c:otherwise>
+     </c:choose>
+    </ui:define>
+    </ui:composition>

@@ -1,0 +1,30 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">Búsqueda</ui:define>
+    <ui:define name="content">
+        
+        <ui:repeat var="evento" value="#{be.filtraEventos()}">
+        <h:form>
+            <h:commandLink action="#{ec.seleccionaEvento(evento)}">
+            <div class="container _element">
+                
+            <p class="text text-1">Nombre evento: <h:outputText id="nombrevento"  value="#{evento.nombre}"/></p>
+            <p class="text text-1">Descripción: <h:outputText id="descripcion"  value="#{evento.descripcion}"/></p>
+            <p class="text text-1">Fecha: <h:outputText id="date"  value="#{evento.fecha_inicio}"><f:convertDateTime pattern="dd.MM.yyyy" type="date" /></h:outputText></p>
+            <p class="text text-1">Localidad: <h:outputText id="local"  value="#{evento.localidad}"/></p>
+         
+            </div>
+                </h:commandLink>
+        </h:form>
+            
+    </ui:repeat>       
+        
+       
+    </ui:define>
+    
+</ui:composition>
