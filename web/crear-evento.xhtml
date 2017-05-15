@@ -38,12 +38,12 @@
       Organizador:<h:inputText id="organizador" class="_input" value="#{newEv.organizador}"/>
     </p>
     <div id="tipo" class="wrapper wrapper-2 js-tipo">
-    <h:selectOneMenu value="#{newEv.tevento}">
-        <f:selectItem itemValue="#{newEv.tevento = Null}" itemLabel="Elige un campo" />
-        <f:selectItem itemValue="#{newEv.tevento = EMPRESARIAL}" itemLabel="Empresarial" />
-        <f:selectItem itemValue="#{newEv.tevento = SOCIAL}" itemLabel="Social" />
-        <f:selectItem itemValue="#{newEv.tevento = CULTURAL}" itemLabel="Cultural" />
-        <f:selectItem itemValue="#{newEv.tevento = OTRO}" itemLabel="Otro" />
+        <h:selectOneMenu value="#{newEv.tevento}">
+        <f:selectItem itemValue="#{null}" itemLabel="Seleccione un tipo" />
+        <f:selectItem itemValue="#{'empresarial'}" itemLabel="Empresarial" />
+        <f:selectItem itemValue="#{'social'}" itemLabel="Social" />
+        <f:selectItem itemValue="#{'cultural'}" itemLabel="Cultural" />
+       
       </h:selectOneMenu>
     </div>
 

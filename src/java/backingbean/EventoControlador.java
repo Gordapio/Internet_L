@@ -150,6 +150,16 @@ public class EventoControlador{
         
     }
     
+    public ArrayList<Evento> eventosPropuestos(){
+        ArrayList<Evento> propuestos = new ArrayList<>();
+        for (Evento e : bd.getEventos())
+            if (e.getVisible() && e.getPropuesto()){
+                propuestos.add(e);
+            }
+        return propuestos;
+    }
+    
+    
     /*Crea un evento con las características proporcionadas. El evento, antes de
     publicarse, necesitará ser validado por un periodista*/
     public String crearEvento(String name, int tlf, String org){
@@ -166,11 +176,20 @@ public class EventoControlador{
         int i=0;
         boolean updated=false;
         while (!updated){
-            if (Objects.equals(bd.getEventos().get(i).getId_evento(), id)){
+            if (bd.getEventos().get(i).getId_evento() == id){
                 bd.getEventos().get(i).setVisible(true);
+                bd.getEventos().get(i).setPropuesto(false);
                 updated=true;
             }else i++;
         }
+        
+        return "proponer-evento.xhtml";
+    }
+    
+    public String validarEvento(){
+        
+        eselected.setPropuesto(false);
+        eselected.setVisible(true);
         
         return "proponer-evento.xhtml";
     }
@@ -272,16 +291,6 @@ public class EventoControlador{
         return des;
     
     }
-    
-    public ArrayList<Evento> eventosPropuestos(){
-        ArrayList<Evento> propuestos = new ArrayList<>();
-        for (Evento e : bd.getEventos())
-            if (!e.getVisible() && e.getPropuesto()){
-                propuestos.add(e);
-            }
-        return propuestos;
-    }
-    
     
     
 }

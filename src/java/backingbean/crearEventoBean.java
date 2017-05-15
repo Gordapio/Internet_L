@@ -133,10 +133,11 @@ public class crearEventoBean {
         this.valoraciones = valoraciones;
     }
     
-    public String creaEvento(){
-        //try{
+    public String creaEvento() throws NullPointerException{
+        
             Evento e = new Evento();
             e.setNombre(nombre);
+            e.setId_evento(bd.getId());
             e.setComplejo(complejo);
             e.setDescripcion(descripcion);
             e.setDestacado(Boolean.FALSE);
@@ -144,22 +145,27 @@ public class crearEventoBean {
             e.setLocalidad(localidad);
             e.setOrganizador(organizador);
             e.setPrecio(precio);
-            e.setPropuesto(Boolean.TRUE);
             e.setTe(tevento);
             e.setTlf_contacto(tlf_contacto);
-            e.setVisible(Boolean.FALSE);
             e.setValoraciones(new ArrayList<>());
-            if(us.getUser().getRol().equals(tipoRol.periodista)){
+            
+            bd.incrementarIdEvento();
+            
+           if(us.getUser().getRol()==tipoRol.periodista){
               e.setVisible(Boolean.TRUE); 
               e.setPropuesto(Boolean.FALSE);
+            } else{
+              e.setVisible(Boolean.TRUE);
+              e.setPropuesto(Boolean.TRUE);
             }
             
             bd.addEvento(e);
-        //}catch(){}
-    
-        return "index.xhtml";
+       
+            
+
+
+      return "index.xhtml";  
     }
     
-   
-    
-}
+    }
+

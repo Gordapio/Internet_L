@@ -105,6 +105,7 @@ public class ValoracionControlador {
              if(ev.getEselected().getValoraciones().get(i).getAutor().equals(user.getUser())){
                  encontrado = true;
              }
+             i++;
              
          }
                   }

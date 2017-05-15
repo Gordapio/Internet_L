@@ -19,12 +19,19 @@
                 <h:commandButton class="_button" label="Borrar" value="borrarevento" action="#{ec.eliminarEvento(ec.eselected.id_evento)}"/>
             </h:form>
         </c:when>
-        <c:when test="#{(usuarioControlador.user.rol == 'periodista' || usuarioControlador.user.rol == 'administrador') and ec.eselected.propuesto}">>
+        <c:when test="#{(usuarioControlador.user.rol == 'periodista' || usuarioControlador.user.rol == 'administrador') and ec.eselected.propuesto}">
             <h:form>
                 <h:commandButton class="_button" label="Borrar" value="borrarevento" action="#{ec.eliminarEventoPropuesto()}"/>
             </h:form>
         </c:when>
         
+    </c:choose>
+    <c:choose>
+        <c:when test="#{(usuarioControlador.user.rol == 'periodista' and ec.eselected.propuesto)}">
+            <h:form>
+                <h:commandButton class="_button" label="Validar" value="validarevento" action="#{ec.validarEvento()}"/>
+            </h:form>
+        </c:when>
     </c:choose>
     <c:choose>
         

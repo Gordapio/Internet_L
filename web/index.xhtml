@@ -19,8 +19,7 @@
    
     
     
-    
-    <ui:repeat var="evento" value="#{ec.verEventos()}">
+     <ui:repeat var="evento" value="#{ec.verEventos()}">
         <h:form>
             <h:commandLink action="#{ec.seleccionaEvento(evento)}">
             <div class="container _element">
@@ -35,6 +34,7 @@
         </h:form>
             
     </ui:repeat>
+   
  
     <aside>   
    
@@ -75,10 +75,10 @@
       <p class="text text-5">
         Fecha:
       </p>
-      <h:selectOneMenu value="#{ec.f_fecha}">
+      <!--<h:selectOneMenu value="#{ec.f_fecha}">
                 <f:selectItem itemValue="Null" itemLabel="Elige una opción" />
           <f:selectItems value = "#{ec.getFechasNoProp()}" var="fecha" itemLabel = "#{fecha}" itemValue="#{fecha}"/> 
-  </h:selectOneMenu>
+  </h:selectOneMenu>-->
       <button id="enviarbus" class="_button js-busq" type="submit">ENVIAR</button>
     </div>
     </h:form>

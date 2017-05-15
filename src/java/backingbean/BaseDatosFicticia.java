@@ -24,6 +24,9 @@ public class BaseDatosFicticia {
     private ArrayList<Evento> listaEventos;
     private ArrayList<Usuarioreg> listaUsuarios;
     private ArrayList<Valoracion> listaValoraciones;
+    private Long id;
+
+   
     /**
      * Creates a new instance of BaseDatosFicticia
      */
@@ -33,6 +36,7 @@ public class BaseDatosFicticia {
         ArrayList<Valoracion> valoraciones=new ArrayList<>();
          ArrayList<Valoracion> valoracione=new ArrayList<>();
          ArrayList<Valoracion> valoracioness=new ArrayList<>();
+        id = 0L;
         
         /*Valoracion val = new Valoracion();
         val.setAutor(null);
@@ -41,7 +45,7 @@ public class BaseDatosFicticia {
         valoraciones.add(val);*/
         
         Evento e= new Evento();
-        e.setId_evento(1L);
+        e.setId_evento(id);
         e.setNombre("Fiesta1");
         e.setDescripcion("Cagontusmuela");
         e.setLocalidad("Alozaina");
@@ -51,6 +55,7 @@ public class BaseDatosFicticia {
         e.setFecha_inicio(Date.valueOf("2015-03-31"));
         e.setValoraciones(valoraciones);
         listaEventos.add(e);
+        id++;
         
         /*Valoracion va = new Valoracion();
         va.setAutor(null);
@@ -60,7 +65,7 @@ public class BaseDatosFicticia {
         
         Evento ev= new Evento();
         ev.setNombre("Feria");
-        ev.setId_evento(2L);
+        ev.setId_evento(id);
         ev.setDescripcion("YEAH");
         ev.setLocalidad("Bonela");
         ev.setVisible(Boolean.TRUE);
@@ -68,19 +73,20 @@ public class BaseDatosFicticia {
         ev.setFecha_inicio(Date.valueOf("2017-08-20"));
         ev.setValoraciones(valoracione);
         listaEventos.add(ev);
+        id++;
         
         //eventos propuestos
         Evento eve= new Evento();
         eve.setNombre("Fiestaasasdasdasdas");
-        eve.setId_evento(3L);
+        eve.setId_evento(id);
         eve.setDescripcion("enga amo");
         eve.setLocalidad("Churripena");
-        eve.setVisible(Boolean.FALSE);
+        eve.setVisible(Boolean.TRUE);
         eve.setPropuesto(Boolean.TRUE);
         eve.setFecha_inicio(Date.valueOf("2017-05-05"));
         eve.setValoraciones(valoracioness);
         listaEventos.add(eve);
-        
+        id++;
         
         //USUARIOS
         Usuarioreg u=new Usuarioreg();
@@ -136,4 +142,8 @@ public class BaseDatosFicticia {
     public void addEvento(Evento e){listaEventos.add(e);}
     public void addUsuario(Usuarioreg u){listaUsuarios.add(u);}
     public Evento getEvento(){return listaEventos.get(0);}
+    public Long getId() {return id;}
+
+    public void setId(Long id) {this.id = id;}
+    public void incrementarIdEvento(){this.id++;}
 }
