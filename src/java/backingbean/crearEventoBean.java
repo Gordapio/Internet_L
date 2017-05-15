@@ -11,7 +11,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import jpa.Evento;
 import jpa.Evento.tipoEvento;
-import jpa.Usuarioreg.*;
+import jpa.Usuarioreg;
+import jpa.Usuarioreg.tipoRol;
 import jpa.Valoracion;
 
 /**
@@ -45,10 +46,12 @@ public class crearEventoBean {
     //private Boolean visible;
     //private Boolean propuesto;
     private tipoEvento tevento;
+  
 
     
     private ArrayList<Valoracion> valoraciones;
-    //private List<Usuarioreg> likes;
+
+    private ArrayList<Usuarioreg> likes;
     
     public crearEventoBean() {
     }
@@ -133,7 +136,15 @@ public class crearEventoBean {
         this.valoraciones = valoraciones;
     }
     
-    public String creaEvento() throws NullPointerException{
+    public ArrayList<Usuarioreg> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(ArrayList<Usuarioreg> likes) {
+        this.likes = likes;
+    }
+    
+    public String creaEvento(){
         
             Evento e = new Evento();
             e.setNombre(nombre);
@@ -148,6 +159,7 @@ public class crearEventoBean {
             e.setTe(tevento);
             e.setTlf_contacto(tlf_contacto);
             e.setValoraciones(new ArrayList<>());
+            e.setLikes(new ArrayList<>());
             
             bd.incrementarIdEvento();
             

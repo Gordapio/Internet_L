@@ -115,7 +115,47 @@ public class ValoracionControlador {
          
      }
         
-    
+     public int verLikes(){
+         
+         return ev.getEselected().getLikes().size();
+         
+     }
+     
+     public String doLike(){
+         
+         
+         if(haLike()){
+             return "evento.xhtml";
+         } else{
+             ev.getEselected().getLikes().add(user.getUser());
+         }
+         
+         return "evento.xhtml";
+     }
+     
+     public boolean haLike(){
+         
+         boolean encontrado = false;
+         int i = 0;
+         
+         if(ev.getEselected().getLikes().isEmpty() || ev.getEselected().getLikes() == null){
+             return encontrado;
+         } else {
+             
+         
+         while(!encontrado && i<ev.getEselected().getLikes().size()){
+             
+             if(ev.getEselected().getLikes().get(i).equals(user.getUser())){
+                 encontrado = true;
+             }
+             i++;
+             
+         }
+                  }
+
+         return encontrado;
+         
+     }
      
      
 }

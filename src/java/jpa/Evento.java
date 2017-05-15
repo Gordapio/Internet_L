@@ -25,7 +25,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Evento implements Serializable {
 
-    public enum tipoEvento{social, cultural, empresarial};
+    public enum tipoEvento{social, cultural, empresarial, otro};
     
     private static final long serialVersionUID = 1L;
     @Id

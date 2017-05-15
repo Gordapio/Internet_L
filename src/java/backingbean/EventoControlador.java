@@ -8,6 +8,8 @@ package backingbean;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Objects;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
@@ -27,18 +29,6 @@ public class EventoControlador{
     @Inject
     BaseDatosFicticia bd;    
 
-    
-    //Valoraciones
-    
-    private ArrayList<Valoracion> listaValoracion;
-
-    public ArrayList<Valoracion> getListaValoracion() {
-        return listaValoracion;
-    }
-
-    public void setListaValoracion(ArrayList<Valoracion> listaValoracion) {
-        this.listaValoracion = listaValoracion;
-    }
     
     //evento seleccionado para mostrar
     private Evento eselected;
@@ -228,6 +218,10 @@ public class EventoControlador{
         return "proponer-evento.xhtml";
         
     }
+    
+    public String modificarEv(){
+        return null;
+    }
 
     public String destacarEvento(Long id){
         int i=0;
@@ -240,10 +234,9 @@ public class EventoControlador{
         }
         return null;
     }
-    /*Hay que pensar bien este*/
-    public String valorarEvento(){return null;}
 
-    /*Devuelve solo los eventos que se ajusten al filtro ordenados de forma habitual*/
+    // ORDENAR
+     /*Devuelve solo los eventos que se ajusten al filtro ordenados de forma habitual*/
     public ArrayList<Evento> filtrarEventos(String n, String l, tipoEvento t, Date f, double p){
         ArrayList<Evento> filtrados = new ArrayList<Evento>();
         
@@ -255,42 +248,109 @@ public class EventoControlador{
         return ordenarEventos(filtrados); //cómo juntamos esto con la página?
         // devuelve la página y la otra página llama a esto?
     }
-
-    /*Para ordenar eventos. Lo mismo se suprime*/
-    private ArrayList<Evento> ordenarEventos(ArrayList<Evento> des){
-        ArrayList<Evento> ord = new ArrayList<Evento>();
-        int i=0;
-        boolean pos_encontrada=false;
-        
-        //Hay que mirarlo
-        /*
-        for (Evento e : des){
-            if (e.getVisible())//es visible
-                while (!pos_encontrada && i<ord.size()){
-                    if (e.getDestacado()){//es destacado
-                        if (!ord.get(i).getDestacado())//el de la pos actual no
-                            pos_encontrada=true;
-                        else if(ord.get(i).getLikes().size()<e.getLikes().size())
-                            pos_encontrada=true;
-                        else if(ord.get(i).getFecha_inicio().before(e.getFecha_inicio())){//si es antes
-                            pos_encontrada=true;
-                        }
-                    }else    
-                    
-                    
-                    
-                    if (i>=ord.size() && !pos_encontrada)
-                        i++;
-                }
-                ord.add(i, e);
-                i=0;
-                pos_encontrada=false;
-                
-        }*/
-        
-        return des;
     
+    private ArrayList<Evento> soloVisibles(ArrayList<Evento> des){
+        ArrayList<Evento> ord = new ArrayList<>();
+        
+        for (Evento e : des)
+            if (e.getVisible())
+                ord.add(e);                
+        
+        return ord;
     }
+    
+    private ArrayList<Evento> soloDestacados(ArrayList<Evento> des){
+        ArrayList<Evento> ord = new ArrayList<>();
+       
+        for (Evento e : des)
+            if (e.getDestacado())
+                ord.add(e);                
+        
+        return ord;
+    }
+    
+    private ArrayList<Evento> soloLikes(ArrayList<Evento> des){
+        ArrayList<Evento> ord = new ArrayList<>();
+        
+        for (Evento e : des)
+            if (!e.getDestacado() && e.getLikes().size()>0)
+                ord.add(e);                
+        
+        return ord;
+    }
+    
+    private ArrayList<Evento> soloFechas(ArrayList<Evento> des){
+        ArrayList<Evento> ord = new ArrayList<>();
+        
+        for (Evento e : des)
+            if (!e.getDestacado() && e.getLikes().size()<=0)
+                ord.add(e);                
+        
+        return ord;
+    }
+    
+    private ArrayList<Evento> ordenaFecha(ArrayList<Evento> des){
+         Collections.sort(des, new Comparator<Evento>(){
+            @Override
+            public int compare(Evento ev1, Evento ev2){
+                if (ev1.getFecha_inicio().before(ev2.getFecha_inicio()))
+                    return -1;
+                else if (ev1.getFecha_inicio().after(ev2.getFecha_inicio()))
+                    return 1;
+                else
+                    return 0;
+            }
+        });
+                
+        return des;
+    }
+    
+    private ArrayList<Evento> ordenaLike(ArrayList<Evento> des){
+        
+        Collections.sort(des, new Comparator<Evento>(){
+            @Override
+            public int compare(Evento ev1, Evento ev2){
+                if (ev1.getLikes().size()>ev2.getLikes().size())
+                    return -1;
+                else if (ev1.getLikes().size()<ev2.getLikes().size())
+                    return 1;
+                else
+                    return 0;
+            }
+        });
+                
+        return des;
+    }
+    
+    private ArrayList<Evento> ordenaDestacado(ArrayList<Evento> des){
+        return ordenaLike(des);
+    }
+
+    /*Para ordenar eventos*/
+    public ArrayList<Evento> ordenarEventos(ArrayList<Evento> des){
+        ArrayList<Evento> ord = new ArrayList<>();
+        ArrayList<Evento> destacados,masLikes,recientes; // Estos arrays son mutuamente excluyentes, luego se concatenan
+        
+        //ord = soloVisibles(ord); //Solo los visibles
+        //Hace falta clonar?? Creo no, solo referencia
+        destacados=soloDestacados(des);
+        masLikes=soloLikes(des);
+        recientes=soloFechas(des);
+        
+        destacados = ordenaDestacado(destacados); //Devuelve los destacados ya ordenados
+        masLikes = ordenaLike(masLikes); //Devuelve los que tienen mas likes ya ordenados
+        recientes = ordenaFecha(recientes); //Devuelve los más recientes
+        
+        for (Evento e : destacados)
+            ord.add(e);
+        for (Evento e : masLikes)
+            ord.add(e);
+        for (Evento e : recientes)
+            ord.add(e);
+
+        return ord;    
+    }
+    
     
     
 }

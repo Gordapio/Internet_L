@@ -34,8 +34,8 @@ public class BaseDatosFicticia {
         listaEventos=new ArrayList<>();
         listaUsuarios=new ArrayList<>();
         ArrayList<Valoracion> valoraciones=new ArrayList<>();
-         ArrayList<Valoracion> valoracione=new ArrayList<>();
-         ArrayList<Valoracion> valoracioness=new ArrayList<>();
+        ArrayList<Valoracion> valoracione=new ArrayList<>();
+        ArrayList<Valoracion> valoracioness=new ArrayList<>();
         id = 0L;
         
         /*Valoracion val = new Valoracion();
@@ -54,6 +54,7 @@ public class BaseDatosFicticia {
         //e.setFecha_inicio((Date) Calendar.getInstance().getTime());
         e.setFecha_inicio(Date.valueOf("2015-03-31"));
         e.setValoraciones(valoraciones);
+        e.setLikes(new ArrayList<>());
         listaEventos.add(e);
         id++;
         
@@ -72,6 +73,8 @@ public class BaseDatosFicticia {
         ev.setPropuesto(Boolean.FALSE);
         ev.setFecha_inicio(Date.valueOf("2017-08-20"));
         ev.setValoraciones(valoracione);
+        ev.setLikes(new ArrayList<>());
+
         listaEventos.add(ev);
         id++;
         
@@ -85,6 +88,8 @@ public class BaseDatosFicticia {
         eve.setPropuesto(Boolean.TRUE);
         eve.setFecha_inicio(Date.valueOf("2017-05-05"));
         eve.setValoraciones(valoracioness);
+        eve.setLikes(new ArrayList<>());
+
         listaEventos.add(eve);
         id++;
         

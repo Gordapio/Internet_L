@@ -41,22 +41,6 @@
             </h:form>
         </c:when>
     </c:choose>
-    
-    
-        
-    <p>Likes: </p>
-    <h:outputText id="likes"  value="#{vc.verLikes()}"/>
-        
-    <c:choose>
-        <c:when test="#{not empty usuarioControlador.user and not vc.haValorado()}">
-            <h:form>
-                <h:commandButton class="_button" label="Like" value="dolike" action="#{vc.doLike()}"/>
-            </h:form>
-        </c:when>
-    </c:choose>
-        
-    
-    
      <c:choose>    
         <c:when test="#{not empty usuarioControlador.user and not vc.haValorado()}">
         
