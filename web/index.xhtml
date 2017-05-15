@@ -1,0 +1,88 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+<ui:define name="title"></ui:define>
+    <ui:define name="content">
+       
+        
+  <body class="body page-index clearfix">
+    <button onclick="window.location='faces/log-in.xhtml';" class="_button _button-1">Entrar</button>
+    <button onclick="window.location='faces/sign-up.xhtml';" class="_button _button-2">Registarse</button>
+    <button onclick="window.location='faces/mostrar-periodistas.xhtml';" class="_button _button-3">Periodistas</button>
+    <button onclick="window.location='faces/crear-evento.xhtml';" id="crearevento" class="_button _button-4">Crear evento</button>
+    <button onclick="window.location='faces/modificar-datos.xhtml';" class="_button _button-5">Modificar datos</button>
+    <button onclick="window.location='faces/proponer-evento.xhtml';" class="_button _button-6">Eventos propuestos</button>
+   
+    
+    
+    
+    <ui:repeat var="evento" value="#{ec.verEventos()}">
+        <h:form>
+            <h:commandLink action="#{ec.seleccionaEvento(evento)}">
+            <div class="container _element">
+                
+            <p class="text text-1">Nombre evento: <h:outputText id="nombrevento"  value="#{evento.nombre}"/></p>
+            <p class="text text-1">Descripción: <h:outputText id="descripcion"  value="#{evento.descripcion}"/></p>
+            <p class="text text-1">Localidad: <h:outputText id="local"  value="#{evento.localidad}"/></p>
+            <p class="text text-1">Fecha: <h:outputText id="date"  value="#{evento.fecha_inicio}"><f:convertDateTime pattern="dd.MM.yyyy" type="date" /></h:outputText></p>
+         
+            </div>
+                </h:commandLink>
+        </h:form>
+            
+    </ui:repeat>
+ 
+    <aside>   
+   
+        <h:form>
+
+  
+        <div class="container _container clearfix">
+      <p class="text text-1">
+        Búsqueda
+      </p>
+      <p class="text text-2">Nombre:<h:inputText id="buscar" class="_input _input-1 js-busqueda" value="#{ec.f_nombre}"/></p>
+      
+
+      
+      <p class="text text-3">
+        Localidad:
+      </p>
+      <div id="localidad" class="wrapper wrapper-1 js-localidad">
+        <h:selectOneMenu value = "#{ec.f_localidad}"> 
+			<f:selectItems value = "#{ec.getLocalidadesNoProp()}" var="local" itemLabel = "#{local}" itemValue="#{local}"/> 
+		</h:selectOneMenu> 		
+      </div>
+
+      <p class="text text-4">
+        Tipo:
+      </p>
+      <div id="tipo" class="wrapper wrapper-2 js-tipo">
+      	<h:selectOneMenu value="#{ec.f_tipo}">
+                        <f:selectItem itemValue="Null" itemLabel="Elige una opción" />
+   			<f:selectItem itemValue="empresarial" itemLabel="Empresarial" />
+   			<f:selectItem itemValue="social" itemLabel="Social" />
+   			<f:selectItem itemValue="cultural" itemLabel="Cultural" />
+                       
+                       
+   		</h:selectOneMenu>
+      </div>
+
+      <p class="text text-5">
+        Fecha:
+      </p>
+      <h:selectOneMenu value="#{ec.f_fecha}">
+                <f:selectItem itemValue="Null" itemLabel="Elige una opción" />
+          <f:selectItems value = "#{ec.getFechasNoProp()}" var="fecha" itemLabel = "#{fecha}" itemValue="#{fecha}"/> 
+  </h:selectOneMenu>
+      <button id="enviarbus" class="_button js-busq" type="submit">ENVIAR</button>
+    </div>
+    </h:form>
+  </aside>
+ </body>
+    </ui:define>
+</ui:composition>

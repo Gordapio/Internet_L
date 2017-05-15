@@ -1,0 +1,26 @@
+En modificar evento:
+
+ <!-->
+                    <div>
+                       <h:selectOneMenu value="#{ec.eselected.destacado}">
+                        <f:selectItem itemValue=#{null} itemLabel="Elige una opción" />
+   			<f:selectItem itemValue=#{true} itemLabel="Destacado" />
+   			<f:selectItem itemValue=#{false} itemLabel="No destacado" />
+   			
+                       
+                       
+                       </h:selectOneMenu>
+                    </div>
+                    
+                    
+                    <c:choose>
+                        <c:when test="#{!ec.eselected.destacado}" >
+                            <h:commandButton value="Destacar" action="#{ec.destacarEvento()}" />
+                        </c:when>
+                        <c:otherwise>
+                            <h:commandButton value="Nodestacar" action="#{ec.desDestacarEvento()}" />
+                        </c:otherwise>
+                       
+                    </c:choose>
+                    
+                    <-->

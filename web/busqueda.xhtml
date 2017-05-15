@@ -1,0 +1,29 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+    <ui:define name="title">Página para el usuario normal</ui:define>
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.usuario.rol == 'NORMAL'}">
+                <h1>Usuario normal-BuSqUeDa</h1>
+                <p>¡¡Bienvenido <h:outputText value="#{controlAutorizacion.usuario.usuario}"/>!!</p>
+                
+                
+                <p>Encontrados: <h:outputText value="#{controlEventos.eventos}"/></p>
+                
+                
+                
+                </c:when>
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+        </c:choose>
+   
+        
+       
+    </ui:define>
+    
+</ui:composition>
