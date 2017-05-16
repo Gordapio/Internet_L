@@ -5,6 +5,7 @@
  */
 package backingbean;
 
+import java.util.Date;
 import java.util.ArrayList;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -31,8 +32,8 @@ public class crearEventoBean {
     
     //private Long id_evento;
     private String nombre;
-    //private Date fecha_inicio;
-    //private Date fecha_fin;
+    private Date fecha_inicio;
+    private Date fecha_fin;
     //private Time hora_inicio;
     //private Time hora_fin;
     private String descripcion;
@@ -144,6 +145,22 @@ public class crearEventoBean {
         this.likes = likes;
     }
     
+    public Date getFecha_inicio() {
+        return fecha_inicio;
+    }
+
+    public void setFecha_inicio(Date fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
+    }
+
+    public Date getFecha_fin() {
+        return fecha_fin;
+    }
+
+    public void setFecha_fin(Date fecha_fin) {
+        this.fecha_fin = fecha_fin;
+    }
+    
     public String creaEvento(){
         
             Evento e = new Evento();
@@ -160,7 +177,8 @@ public class crearEventoBean {
             e.setTlf_contacto(tlf_contacto);
             e.setValoraciones(new ArrayList<>());
             e.setLikes(new ArrayList<>());
-            
+            e.setFecha_inicio(fecha_inicio);
+            e.setFecha_fin(fecha_fin);
             bd.incrementarIdEvento();
             
            if(us.getUser().getRol()==tipoRol.periodista){
