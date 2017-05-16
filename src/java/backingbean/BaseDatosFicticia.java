@@ -54,6 +54,7 @@ public class BaseDatosFicticia {
         //e.setFecha_inicio((Date) Calendar.getInstance().getTime());
         e.setFecha_inicio(Date.valueOf("2015-03-31"));
         e.setValoraciones(valoraciones);
+        e.setDestacado(Boolean.TRUE);
         e.setLikes(new ArrayList<>());
         listaEventos.add(e);
         id++;
