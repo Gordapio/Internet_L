@@ -2,7 +2,8 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
     
 <ui:define name="title">ModificarDatos</ui:define>
     <ui:define name="content">
@@ -23,37 +24,49 @@
           <p>¡¡Bienvenido <h:outputText value="#{usuarioControlador.user.nickname}"/>!!</p>
                 
                 <h:form id="mod">
-                    <p>Nickname</p>
                     
-                    <h:inputText id="nout" value="#{usuarioControlador.user.nickname}"/>
+                    <h:panelGrid columns="2" columnClasses="column" cellpadding="5" cellspacing="1" >
+                   
+                    <h:outputLabel for="nick" value="Nickname:" />
+                    <p:inplace id="nick" editor="true">
+                         <p:inputText value="#{usuarioControlador.user.nickname}" required="true" label="text" />
+                    </p:inplace>
                     
-                    <p>Email</p>
-                    
-                    <h:inputText id="eout" value="#{usuarioControlador.user.email}"/>
-                    
-                    <p>Contraseña</p>
-                    <h:inputText id="cout" value="#{usuarioControlador.user.contraseña}" />
-                    
-                    <p>Repetir Contraseña</p>
-                    <h:inputText id="rcout" value="#{usuarioControlador.user.contraseña}"/>
-                    
-                    <p>DNI</p>
-                    
-                    <h:inputText id="dout" value="#{usuarioControlador.user.dni}"/>
+                   
+                    <h:outputLabel for="email" value="E-mail:" />
+                    <p:inplace id="email" editor="true">
+                        <p:inputText value="#{usuarioControlador.user.email}" required="true" label="text" />
+                    </p:inplace>
                     
                     
-                    <p>Direccion</p>
+                    <h:outputLabel for="pass" value="Contraseña:" />
+                    <p:inplace id="pass" editor="true">
+                        <p:inputText value="#{usuarioControlador.user.contraseña}" required="true" label="text" />
+                    </p:inplace>
                     
-                    <h:inputText id="dirout" value="#{usuarioControlador.user.direccion}"/>
+                   
+                    <h:outputLabel for="dni" value="DNI:" />
+                    <p:inplace id="dni" editor="true">
+                        <p:inputText value="#{usuarioControlador.user.dni}" required="true" label="text" />
+                    </p:inplace>
                     
-                    <p>Telefono contacto</p>
                     
-                    <h:inputText id="tout" value="#{usuarioControlador.user.telefono}"/>
+                    <h:outputLabel for="address" value="Dirección:" />
+                    <p:inplace id="address" editor="true">
+                        <p:inputText value="#{usuarioControlador.user.direccion}" required="true" label="text" />
+                    </p:inplace>
                     
-                    <h:commandButton id="modificardatos" value="Modif" action="#{usuarioControlador.modificarUsuario()}" />
-                                       
+                    
+                    <h:outputLabel for="tlf" value="Teléfono:" />
+                    <p:inplace id="tlf" editor="true">
+                        <p:inputText value="#{usuarioControlador.user.telefono}" required="true" label="text" />
+                    </p:inplace>
+                    
+                   
+                    <h:outputLabel for="remove" value="Borrar usuario:" />                   
                     <h:commandButton id="borrarusuario" value="Borrar" action="#{usuarioControlador.borrarUsuario(usuarioControlador.user)}" />
-
+                    
+                    </h:panelGrid>
                 </h:form>
     </c:when> 
           
@@ -62,36 +75,51 @@
           <p>¡¡Bienvenido <h:outputText value="#{usuarioControlador.user.nickname}"/>!!</p>
                 
                 <h:form id="modi">
-                    <p>Nickname</p>
+                
                     
-                    <h:inputText id="noutp" value="#{usuarioControlador.periodistaSelected.nickname}"/>
+                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5" cellspacing="1" >
+                   
+                    <h:outputLabel for="nick" value="Nickname:" />
+                    <p:inplace id="nick" editor="true">
+                         <p:inputText value="#{usuarioControlador.periodistaSelected.nickname}" required="true" label="text" />
+                    </p:inplace>
                     
-                    <p>Email</p>
-                    
-                    <h:inputText id="eoutp" value="#{usuarioControlador.periodistaSelected.email}"/>
-                    
-                    <p>Contraseña</p>
-                    <h:inputText id="coutp" value="#{usuarioControlador.periodistaSelected.contraseña}" />
-                    
-                    <p>Repetir Contraseña</p>
-                    <h:inputText id="rcoutp" value="#{usuarioControlador.periodistaSelected.contraseña}"/>
-                    
-                    <p>DNI</p>
-                    
-                    <h:inputText id="doutp" value="#{usuarioControlador.periodistaSelected.dni}"/>
+                   
+                    <h:outputLabel for="email" value="E-mail:" />
+                    <p:inplace id="email" editor="true">
+                        <p:inputText value="#{usuarioControlador.periodistaSelected.email}" required="true" label="text" />
+                    </p:inplace>
                     
                     
-                    <p>Direccion</p>
+                    <h:outputLabel for="pass" value="Contraseña:" />
+                    <p:inplace id="pass" editor="true">
+                        <p:inputText value="#{usuarioControlador.periodistaSelected.contraseña}" required="true" label="text" />
+                    </p:inplace>
                     
-                    <h:inputText id="diroutp" value="#{usuarioControlador.periodistaSelected.direccion}"/>
+                   
+                    <h:outputLabel for="dni" value="DNI:" />
+                    <p:inplace id="dni" editor="true">
+                        <p:inputText value="#{usuarioControlador.periodistaSelected.dni}" required="true" label="text" />
+                    </p:inplace>
                     
-                    <p>Telefono contacto</p>
                     
-                    <h:inputText id="toutp" value="#{usuarioControlador.periodistaSelected.telefono}"/>
+                    <h:outputLabel for="address" value="Dirección:" />
+                    <p:inplace id="address" editor="true">
+                        <p:inputText value="#{usuarioControlador.periodistaSelected.direccion}" required="true" label="text" />
+                    </p:inplace>
                     
-                    <h:commandButton id="modificardatosperiodista" value="Modifi" action="#{usuarioControlador.modificarUsuario()}" />
-                            
-                    <h:commandButton id="borrarperiodista" value="Borrar" action="#{usuarioControlador.borrarPeriodista(usuarioControlador.periodistaSelected)}" />
+                    
+                    <h:outputLabel for="tlf" value="Teléfono:" />
+                    <p:inplace id="tlf" editor="true">
+                        <p:inputText value="#{usuarioControlador.periodistaSelected.telefono}" required="true" label="text" />
+                    </p:inplace>
+                    
+                   
+                    <h:outputLabel for="remove" value="Borrar usuario:" />                   
+                    <h:commandButton id="borrarusuario" value="Borrar" action="#{usuarioControlador.borrarPeriodista(usuarioControlador.periodistaSelected)}" />
+                    
+                    </h:panelGrid>
+                    
 
                 </h:form>
           

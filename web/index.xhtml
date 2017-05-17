@@ -78,7 +78,7 @@
           
       	<h:selectOneMenu value="#{be.f_fecha}">
                 <f:selectItem itemValue="#{null}" itemLabel="Elige una opción" /> 
-                <f:selectItems value = "#{ec.getFechasNoProp()}" var="fecha" itemLabel = "#{fecha}" itemValue="#{fecha}"/>
+                <f:selectItems value = "#{ec.getFechasNoProp()}" var="fecha" itemLabel = "#{fecha.date}-#{fecha.month + 1}-#{fecha.year + 1900}" itemValue="#{fecha}"/>
 	</h:selectOneMenu> 
           
          
