@@ -14,38 +14,38 @@
                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5" cellspacing="1" >
                    
                     <h:outputLabel for="name" value="Nombre:" />
-                    <p:inplace id="name" editor="true">
+                    <p:inplace id="name" editor="true" emptyLabel="No inicializado">
                          <p:inputText value="#{ec.eselected.nombre}" required="true" label="text" />
                     </p:inplace>
                     
                    
                     <h:outputLabel for="loc" value="Localidad:" />
-                    <p:inplace id="loc" editor="true">
+                    <p:inplace id="loc" editor="true" emptyLabel="No inicializado">
                          <p:inputText value="#{ec.eselected.localidad}" required="true" label="text" />
                     </p:inplace>
                     
                     
                     <h:outputLabel for="prize" value="Precio:" />
-                    <p:inplace id="prize" editor="true">
+                    <p:inplace id="prize" editor="true" emptyLabel="No inicializado">
                          <p:inputText value="#{ec.eselected.precio}" required="true" label="text" />
                     </p:inplace>
                     
                    
                     <h:outputLabel for="address" value="Dirección:" />
-                    <p:inplace id="address" editor="true">
+                    <p:inplace id="address" editor="true" emptyLabel="No inicializado">
                          <p:inputText value="#{ec.eselected.direccion}" required="true" label="text" />
                     </p:inplace>
                     
                     
                     <h:outputLabel for="org" value="Organizador:" />
-                    <p:inplace id="org" editor="true">
+                    <p:inplace id="org" editor="true" emptyLabel="No inicializado">
                          <p:inputText value="#{ec.eselected.organizador}" required="true" label="text" />
                     </p:inplace>
                     
                     
                     
                     <h:outputLabel for="desc" value="Descripción:" />
-                    <p:inplace id="desc" editor="true">
+                    <p:inplace id="desc" editor="true" emptyLabel="No inicializado">
                          <p:inputText value="#{ec.eselected.descripcion}" required="true" label="text" />
                     </p:inplace>
                     </h:panelGrid>
@@ -56,13 +56,13 @@
        
                     <p:outputLabel for="fechainicio" value="Fecha inicio:" />
                     
-                    <p:inplace id="fecha1" editor="true">
-                    <p:calendar id="fechainicio" value="#{ec.eselected.fecha_inicio}" pattern="dd/MM/yyyy HH:mm:ss" />
+                    <p:inplace id="fecha1" editor="true" emptyLabel="No inicializado">
+                    <p:calendar id="fechainicio" value="#{ec.eselected.fecha_inicio}" pattern="dd/MM/yyyy HH:mm" />
                     </p:inplace>
                     
                     <p:outputLabel for="fechafin" value="Fecha fin:" />
-                    <p:inplace id="fecha2" editor="true">
-                    <p:calendar id="fechafin" value="#{ec.eselected.fecha_fin}" pattern="dd/MM/yyyy HH:mm:ss" />
+                    <p:inplace id="fecha2" editor="true" emptyLabel="No inicializado">
+                    <p:calendar id="fechafin" value="#{ec.eselected.fecha_fin}" pattern="dd/MM/yyyy HH:mm" />
                     </p:inplace>
                     
                 </h:panelGrid>
@@ -74,7 +74,7 @@
                         
                             <h:outputText value="Destacado: " />
                         
-                        <p:inplace id="desta" editor="true">
+                        <p:inplace id="desta" editor="true" emptyLabel="No inicializado">
                             <p:inputSwitch value="#{ec.eselected.destacado}" />
                         </p:inplace>    
                             
@@ -83,8 +83,6 @@
  
                 </h:form>
                     
-                    
-                    <h:commandButton value="Modif" action="#{ec.modificarEv()}" />
                     
                 </h:form>
           

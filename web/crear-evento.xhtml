@@ -55,9 +55,9 @@
     <h:panelGrid columns="2" cellpadding="5">
        
         <p:outputLabel for="fechainicio" value="Fecha inicio:" />
-        <p:calendar id="fechainicio" value="#{newEv.fecha_inicio}" pattern="dd/MM/yyyy HH:mm:ss" />
+        <p:calendar id="fechainicio" value="#{newEv.fecha_inicio}" pattern="dd/MM/yyyy HH:mm" />
         <p:outputLabel for="fechafin" value="Fecha fin:" />
-        <p:calendar id="fechafin" value="#{newEv.fecha_fin}" pattern="dd/MM/yyyy HH:mm:ss" />
+        <p:calendar id="fechafin" value="#{newEv.fecha_fin}" pattern="dd/MM/yyyy HH:mm" />
     </h:panelGrid>
     
     <h:commandButton class="_button" label="Crear" value="Crear" action="#{newEv.creaEvento()}"/>

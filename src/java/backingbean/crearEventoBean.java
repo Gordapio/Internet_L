@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.ArrayList;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import jpa.Evento;
 import jpa.Evento.tipoEvento;
@@ -162,6 +164,14 @@ public class crearEventoBean {
     }
     
     public String creaEvento(){
+            
+        FacesContext ctx = FacesContext.getCurrentInstance();
+
+        if(fecha_inicio.after(fecha_fin)){
+            ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fechas incorrectas", "fechas incorrectas"));
+            return "crear-evento.xhtml";
+        }
+        
         
             Evento e = new Evento();
             e.setNombre(nombre);
