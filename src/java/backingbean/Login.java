@@ -6,10 +6,7 @@ package backingbean;
 
 //import es.uma.informatica.sii.jsf.autenticacion.modelo.Usuario;
 //import es.uma.informatica.sii.jsf.autenticacion.modelo.Usuario.Rol;
-import jpa.Usuarioreg;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;

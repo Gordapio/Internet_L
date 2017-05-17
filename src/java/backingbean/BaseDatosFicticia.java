@@ -5,7 +5,7 @@
  */
 package backingbean;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.enterprise.context.ApplicationScoped;
@@ -52,7 +52,8 @@ public class BaseDatosFicticia {
         e.setVisible(Boolean.TRUE);
         e.setPropuesto(Boolean.FALSE);
         //e.setFecha_inicio((Date) Calendar.getInstance().getTime());
-        e.setFecha_inicio(Date.valueOf("2015-03-31"));
+        e.setFecha_inicio(new Date(2017,9,15,18,0,0));
+        e.setFecha_fin(new Date(2017,8,28,18,0,0));
         e.setValoraciones(valoraciones);
         e.setDestacado(Boolean.TRUE);
         e.setLikes(new ArrayList<>());
@@ -72,7 +73,8 @@ public class BaseDatosFicticia {
         ev.setLocalidad("Bonela");
         ev.setVisible(Boolean.TRUE);
         ev.setPropuesto(Boolean.FALSE);
-        ev.setFecha_inicio(Date.valueOf("2017-08-20"));
+        ev.setFecha_inicio(new Date(2017,9,15,15,0,0));
+        ev.setFecha_fin(new Date(2017,9,28,18,0,0));
         ev.setValoraciones(valoracione);
         ev.setLikes(new ArrayList<>());
 
@@ -87,7 +89,8 @@ public class BaseDatosFicticia {
         eve.setLocalidad("Churripena");
         eve.setVisible(Boolean.TRUE);
         eve.setPropuesto(Boolean.TRUE);
-        eve.setFecha_inicio(Date.valueOf("2017-05-05"));
+        eve.setFecha_inicio(new Date(2017,6,9,12,0,0));
+        eve.setFecha_fin(new Date(2017,7,10,15,0,0));
         eve.setValoraciones(valoracioness);
         eve.setLikes(new ArrayList<>());
 

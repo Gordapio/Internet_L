@@ -5,8 +5,8 @@
  */
 package backingbean;
 
-import java.io.Serializable;
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,7 +16,16 @@ import javax.inject.Named;
 import javax.inject.Inject;
 import jpa.Evento;
 import jpa.Evento.tipoEvento;
-import jpa.Valoracion;
+
+// fechas
+ 
+import java.text.SimpleDateFormat;
+//import java.util.Date;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+ 
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -351,6 +360,19 @@ public class EventoControlador{
         return ord;    
     }
     
+    // FECHAS
+    public void onDateSelect(SelectEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+    }
+     
+    public void click() {
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+         
+        requestContext.update("form:display");
+        requestContext.execute("PF('dlg').show()");
+    }
     
     
 }

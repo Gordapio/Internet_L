@@ -6,7 +6,6 @@
 package backingbean;
 
 import java.util.ArrayList;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

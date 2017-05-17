@@ -3,7 +3,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
     
 <ui:define name="title"></ui:define>
     <ui:define name="content">
@@ -48,9 +49,22 @@
       </h:selectOneMenu>
     </div>
 
+     
+      <!--  FECHAS   -->
+ 
+    <h:panelGrid columns="2" cellpadding="5">
+       
+        <p:outputLabel for="fechainicio" value="Fecha inicio:" />
+        <p:calendar id="fechainicio" value="#{newEv.fecha_inicio}" pattern="dd/MM/yyyy HH:mm:ss" />
+        <p:outputLabel for="fechafin" value="Fecha fin:" />
+        <p:calendar id="fechafin" value="#{newEv.fecha_fin}" pattern="dd/MM/yyyy HH:mm:ss" />
+    </h:panelGrid>
+    
     <h:commandButton class="_button" label="Crear" value="Crear" action="#{newEv.creaEvento()}"/>
   
   </h:form>
+      
+      
   </body>
 
   </c:when>

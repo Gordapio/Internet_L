@@ -5,11 +5,9 @@
  */
 package backingbean;
 
-import backingbean.BaseDatosFicticia;
-import backingbean.EventoControlador;
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.ArrayList;
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

@@ -6,7 +6,7 @@
 package jpa;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -35,8 +35,8 @@ public class Evento implements Serializable {
     private String nombre;
     private Date fecha_inicio;
     private Date fecha_fin;
-    private Time hora_inicio;
-    private Time hora_fin;
+    //private Time hora_inicio;
+    //private Time hora_fin;
     private String descripcion;
     @Column(nullable = false)
     private String organizador;
@@ -77,13 +77,13 @@ public class Evento implements Serializable {
         this.fecha_fin = fecha_fin;
     }
 
-    public void setHora_inicio(Time hora_inicio) {
+   /* public void setHora_inicio(Time hora_inicio) {
         this.hora_inicio = hora_inicio;
     }
 
     public void setHora_fin(Time hora_fin) {
         this.hora_fin = hora_fin;
-    }
+    }*/
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
@@ -153,13 +153,13 @@ public class Evento implements Serializable {
         return fecha_fin;
     }
 
-    public Time getHora_inicio() {
+    /*public Time getHora_inicio() {
         return hora_inicio;
     }
 
     public Time getHora_fin() {
         return hora_fin;
-    }
+    }*/
 
     public String getDescripcion() {
         return descripcion;
